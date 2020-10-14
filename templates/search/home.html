@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Search Home Test</h1>
+<form method='GET' action="{% url 'results' %}">
+  <div>
+    <label for='query'>Search</label>
+    <input type='text' name='query' id='query' placeholder='Enter food here...'>
+  </div>
+  <div>
+    <label for='db'>
+      <select name='db' id='db'>
+        <option value='SR Legacy'>by Food Group</option>
+        <option value='Foundation'>by Store Brand</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <button type='submit'>Submit</button>
+  </div>
+</form>
+
+{% endblock %}
