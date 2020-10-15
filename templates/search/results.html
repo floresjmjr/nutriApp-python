@@ -4,11 +4,19 @@
 {% block content %}
 
 
-<h1>Results Test</h1>
+<h3>Results for <i>{{ query }}</i>.</h3>
+{% if hits %}
+  {% for foodItem in foodList %}
 
-<p>{{ data }}</p>
+    <p>
+      <a href="{% url 'selection' foodItem.fdcId %}">{{ foodItem.description }}</a>
+    </p>
 
+  {% endfor %}
+{% else %}
+<h3>Sorry no results for <i>{{ query }}</i>.</h3>
 
+{% endif %}
 
 {% endblock %}
 

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
 import requests
-import json
 
 # Create your views here.
 def home(request):
@@ -11,9 +10,27 @@ def home(request):
 def results(request):
   key = "api_key=" + settings.FDC_API_KEY
   query = "&query=" + request.GET["query"]
-  database = "&dataType" + request.GET["db"]
-  url = "https://api.nal.usda.gov/fdc/v1/foods/search?" + key + query + database
+  database = "&dataType=" + request.GET["db"]
+  resultSize = "&pageSize=" + "5"
+  url = "https://api.nal.usda.gov/fdc/v1/foods/search?" + key + query + database + resultSize
   raw_data = requests.get(url)
-  data = json.loads(raw_data.content)
-  context = {'data': data}
+  data = raw_data.json()
+  
+  hits = True if int(data['totalHits']) > 0 else False
+  query = data['foodSearchCriteria']['query']
+  context = {
+    'hits': hits,
+    'query': query,
+    'foodList': data['foods'],
+    }
   return render(request, 'search/results.html', context)
+
+
+def foodItem(request, food_id):
+  key = "api_key=" + settings.FDC_API_KEY
+  url = "https://api.nal.usda.gov/fdc/v1/food/" + '169081' + '?' + key
+  raw_data = requests.get(url)
+  data = raw_data.json()
+  context = { 'data': data }
+  return render(request, 'search/selection.html', context)
+
