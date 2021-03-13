@@ -4,9 +4,28 @@
 {% block content %}
 
 <h1>Selection Home Test</h1>
+<h1>Nutritional Overview</h1>
+<h3>{{ Description }} for 100g</h3>
 
-<p>{{ data }}
+<h6>Total Calories</h6>
+<p>{{ Calories }}</p>
 
-
+<!--
+    function findNutrient(inputName) {
+      test['foodNutrients'].forEach(function(e) {
+         var name = e['nutrient']['name']
+         if (name === inputName) {   
+             console.log(name)
+         } else { 
+            console.log('no Water')
+        }
+      })
+    }
+    function collectNutrients() {
+      FoodObject = {}
+      FoodObject['Calories'] = ...
+      Energy, etc
+    }
+  -->
 
 {% endblock %}

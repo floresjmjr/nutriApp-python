@@ -1,0 +1,33 @@
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  width: 200px;
+  position: absolute;
+  background: gray;
+  height: 100%
+}
+
+main {
+  display: block;
+  padding-left: 200px;
+  background: #fff;
+  height: 100%;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style-type: none;
+}

@@ -11,7 +11,7 @@ def results(request):
   key = "api_key=" + settings.FDC_API_KEY
   query = "&query=" + request.GET["query"]
   database = "&dataType=" + request.GET["db"]
-  resultSize = "&pageSize=" + "5"
+  resultSize = "&pageSize=" + "20"
   url = "https://api.nal.usda.gov/fdc/v1/foods/search?" + key + query + database + resultSize
   raw_data = requests.get(url)
   data = raw_data.json()
@@ -28,9 +28,12 @@ def results(request):
 
 def foodItem(request, food_id):
   key = "api_key=" + settings.FDC_API_KEY
-  url = "https://api.nal.usda.gov/fdc/v1/food/" + '169081' + '?' + key
+  url = "https://api.nal.usda.gov/fdc/v1/food/" + str(food_id) + '?' + key
   raw_data = requests.get(url)
   data = raw_data.json()
-  context = { 'data': data }
+  context = { 
+    'Description': data['description'],
+    'Calories': data['foodNutrients'][0]['nutrient']['name']
+    }
   return render(request, 'search/selection.html', context)
 
