@@ -3,29 +3,83 @@
 
 {% block content %}
 
-<h1>Selection Home Test</h1>
 <h1>Nutritional Overview</h1>
 <h3>{{ Description }} for 100g</h3>
 
-<h6>Total Calories</h6>
-<p>{{ Calories }}</p>
+<table>
+  <tr>
+    <th>Macros</th>
+  </tr>
+  {% for macro in Macros %}
+    <tr>
+      <td>{{ macro.name }}</td>
+      <td>{{ macro.amount }} {{ macro.unit }}</td>
+    </tr>
+  {% endfor %}
+</table>
 
-<!--
-    function findNutrient(inputName) {
-      test['foodNutrients'].forEach(function(e) {
-         var name = e['nutrient']['name']
-         if (name === inputName) {   
-             console.log(name)
-         } else { 
-            console.log('no Water')
-        }
-      })
-    }
-    function collectNutrients() {
-      FoodObject = {}
-      FoodObject['Calories'] = ...
-      Energy, etc
-    }
-  -->
+<table>
+  <tr>
+    <th>Fats</th>
+  </tr>
+  {% for fat in Fats %}
+    <tr>
+      <td>{{ fat.name }}</td>
+      <td>{{ fat.amount }} {{ fat.unit }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+<table>
+  <tr>
+    <th>Carbohydrates</th>
+  </tr>
+  {% for carb in Carbohydrates %}
+    <tr>
+      <td>{{ carb.name }}</td>
+      <td>{{ carb.amount }} {{ carb.unit }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+<table>
+  <tr>
+    <th>Amino Acids</th>
+  </tr>
+  {% for amino in AminoAcids %}
+    <tr>
+      <td>{{ amino.name }}</td>
+      <td>{{ amino.amount }} {{ amino.unit }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+<table>
+  <tr>
+    <th>Vitamins</th>
+  </tr>
+  {% for vitamin in Vitamins %}
+    <tr>
+      <td>{{ vitamin.name }}</td>
+      <td>{{ vitamin.amount }} {{ vitamin.unit }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<table>
+  <tr>
+    <th>Minerals</th>
+  </tr>
+  {% for mineral in Minerals %}
+    <tr>
+      <td>{{ mineral.name }}</td>
+      <td>{{ mineral.amount }} {{ mineral.unit }}</td>
+    </tr>
+  {% endfor %}
+  </tr>
+</table>
 
 {% endblock %}

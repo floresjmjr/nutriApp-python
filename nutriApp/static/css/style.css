@@ -31,3 +31,7 @@ a {
 li {
   list-style-type: none;
 }
+
+tr {
+  display: block;
+}
