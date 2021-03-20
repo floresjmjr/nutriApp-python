@@ -54,7 +54,7 @@ def login(request):
 
     if user is not None:
       auth.login(request, user)
-      return redirect('dashboard')
+      return redirect('log')
     else:
       #needs error message
       return redirect('login')

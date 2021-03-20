@@ -9,7 +9,7 @@
   {% for foodItem in foodList %}
 
     <p>
-      <a href="{% url 'selection' foodItem.fdcId %}">{{ foodItem.description }}</a>
+      <a href="{% url 'food_selected' foodItem.fdcId %}">{{ foodItem.description }}</a>
     </p>
 
   {% endfor %}

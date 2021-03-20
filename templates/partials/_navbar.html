@@ -1,25 +1,39 @@
-<nav>
-  <ul>
-    <li>
-      <a href="{% url 'search' %}">Dashboard</a>
-    </li>
-    <li>
-      <a href=''>Search (by Nutrient)</a>
-    </li>
-    <li>
-      <a href=''>Food Log</a>
-    </li>
-    <li>
-      <a href=''>Daily Stats</a>
-    </li>
-    <li>
-      <a href="{% url 'register' %}">Sign Up</a>
-    </li>
-    <li>
-      <a href="{% url 'login' %}">Login</a>
-    </li>
-    <li>
-      <a href="{% url 'logout' %}">Logout</a>
-    </li>
-  </ul>
-</nav>
+
+{% if user.is_authenticated %}
+  
+  <nav>
+    <ul>
+      <li>Signed in as {{ user }}</li>
+      <li>
+        <a href="{% url 'log' %}">Food Log</a>
+      </li>
+      <li>
+        <a href="{% url 'charts' %}">Daily Stats</a>
+      </li>
+      <li>
+        <a href="{% url 'search' %}">Search</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+  </nav>
+{% else %}
+  <nav>
+    <ul>
+      <li>
+        <a href="{% url 'home' %}">Home</a>
+      </li>
+      <li>
+        <a href="{% url 'search' %}">Search</a>
+      </li>
+      <li>
+        <a href="{% url 'register' %}">Sign Up</a>
+      </li>
+      <li>
+        <a href="{% url 'login' %}">Login</a>
+      </li>
+    </ul>
+  </nav>
+{% endif %}
+

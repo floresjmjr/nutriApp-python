@@ -2,12 +2,10 @@ from django.shortcuts import render
 from django.conf import settings
 import requests
 
-# Create your views here.
-def home(request):
-  return render(request, 'search/home.html')
+def search(request):
+  return render(request, 'food/search.html')
 
-
-def results(request):
+def search_results(request):
   key = "api_key=" + settings.FDC_API_KEY
   query = "&query=" + request.GET["query"]
   database = "&dataType=" + request.GET["db"]
@@ -23,7 +21,7 @@ def results(request):
     'query': query,
     'foodList': data['foods'],
     }
-  return render(request, 'search/results.html', context)
+  return render(request, 'food/search_results.html', context)
 
 
 def foodItem(request, food_id):
@@ -77,5 +75,4 @@ def foodItem(request, food_id):
     'Fats': collectNutrients(Fats),
     'AminoAcids': collectNutrients(AminoAcids)
     }
-  return render(request, 'search/selection.html', context)
-
+  return render(request, 'food/selected.html', context)
