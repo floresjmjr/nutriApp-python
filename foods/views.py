@@ -3,7 +3,7 @@ from django.conf import settings
 import requests
 
 def search(request):
-  return render(request, 'food/search.html')
+  return render(request, 'foods/search.html')
 
 def search_results(request):
   key = "api_key=" + settings.FDC_API_KEY
@@ -21,7 +21,7 @@ def search_results(request):
     'query': query,
     'foodList': data['foods'],
     }
-  return render(request, 'food/search_results.html', context)
+  return render(request, 'foods/search_results.html', context)
 
 
 def foodItem(request, food_id):
@@ -75,4 +75,4 @@ def foodItem(request, food_id):
     'Fats': collectNutrients(Fats),
     'AminoAcids': collectNutrients(AminoAcids)
     }
-  return render(request, 'food/selected.html', context)
+  return render(request, 'foods/selection.html', context)
